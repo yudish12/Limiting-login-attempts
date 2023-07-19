@@ -21,6 +21,8 @@ const loginLimit = limiter({
       payload: `Too many failed Login Attempts Please Retry At ${req.rateLimit.resetTime}`,
     });
   },
+  requestWasSuccessful: (request, response) => response.statusCode < 400,
+  skipSuccessfulRequests: true,
 });
 
 router.route("/login").get(loginView).post(loginLimit, loginController);

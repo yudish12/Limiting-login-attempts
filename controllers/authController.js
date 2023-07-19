@@ -17,7 +17,7 @@ export const loginController = async (req, res) => {
       (e) => JSON.stringify(req.body) === JSON.stringify(e)
     );
     if (!user) {
-      return res.json({
+      return res.status(404).json({
         message: "fail",
         payload: "Invalid Credentials Please try again",
       });
@@ -26,6 +26,6 @@ export const loginController = async (req, res) => {
     res.json({ message: `success`, payload: user });
   } catch (error) {
     console.log(error);
-    res.json({ message: "fail", payload: error });
+    res.status(404).json({ message: "fail", payload: error });
   }
 };
