@@ -11,8 +11,8 @@ export const loginView = async (req, res) => {
 };
 
 export const loginController = async (req, res) => {
+  console.log("asd");
   try {
-    console.log(req.body);
     const user = data.find(
       (e) => JSON.stringify(req.body) === JSON.stringify(e)
     );
